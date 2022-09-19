@@ -1,0 +1,5 @@
+:root{
+    --header-height:100px;
+    --footer-height:200px;
+    --main-height:calc(100vh - var(--header-height) - var(--footer-height));
+}
