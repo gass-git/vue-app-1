@@ -1,6 +1,4 @@
 <template>
-
-    <!-- how to create child components ?? -->
     <table>
         <tr>
             <th>first name</th>
@@ -22,10 +20,10 @@
 </template>
 
 <script>
-import CustomerService from '../services/CustomerService'
+import CustomerService from '../../services/CustomerService'
 
 export default {
-    name: 'CustomerList',
+    name: 'CustomerData',
     data(){
         return{
             customers: []

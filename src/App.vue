@@ -1,29 +1,23 @@
 <template>
     <div class="grid-container">
-      <header>
-        <HeaderTitle />
-      </header>
-      <main>
-        <MainContent />
-      </main>
-      <footer>
-        <FooterContent />
-      </footer>
+        <AppHeader />
+        <AppMain />
+        <AppFooter />
     </div>
 </template>
 
 <script>
-import MainContent from './components/MainContent.vue'
-import FooterContent from './components/FooterContent.vue'
-import HeaderTitle from './components/HeaderTitle.vue'
+import AppHeader from "./components/AppHeader.vue";
+import AppMain from "./components/AppMain.vue";
+import AppFooter from "./components/AppFooter.vue";
 
 export default {
-  name: 'App',
-  components: {
-    HeaderTitle,
-    MainContent,
-    FooterContent
-  }
+    name: 'App',
+    components: {
+        AppHeader,
+        AppMain,
+        AppFooter
+    }
 }
 </script>
 
@@ -42,18 +36,6 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-}
-header{
-  height:var(--header-height);
-  background:#42b883;
-}
-main{
-  min-height:var(--main-height);
-  background: #F1F1F1;
-}
-footer{
-  height:var(--footer-height);
-  background:#35495e;
 }
 .grid-container{
   display:grid;
