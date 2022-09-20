@@ -49,7 +49,7 @@ header{
 }
 main{
   min-height:var(--main-height);
-  background:white;
+  background: #F1F1F1;
 }
 footer{
   height:var(--footer-height);

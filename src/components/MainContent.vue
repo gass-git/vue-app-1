@@ -1,4 +1,6 @@
 <template>
+
+    <!-- how to create child components ?? -->
     <table>
         <tr>
             <th>first name</th>
@@ -44,18 +46,20 @@ export default {
 
 <style scoped>
 table{
+    background: white;
     margin:40px auto;
-    font-size:18px;
-    border:1px solid #ddd;
+    font-size:16px;
+    border-radius: 5px;
+    padding:10px 20px 10px 20px;
+}
+tr > * {
+    text-align: left;
+    padding:8px 25px 8px 25px;   
 }
 th{
-    text-transform: capitalize;
+    text-transform: capitalize; 
 }
-td,th{
-    text-align: center;
-    padding:8px 15px 8px 15px;
-}
-tr:nth-child(even){
-    background:#ddd;
+td{
+    border-top:1px solid #F2F2F2;
 }
 </style>
