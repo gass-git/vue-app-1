@@ -46,7 +46,7 @@ export default {
 
 <style scoped>
 table{
-    background: white;
+    background: rgb(255, 255, 255);
     margin:40px auto;
     font-size:16px;
     border-radius: 5px;
@@ -61,6 +61,6 @@ th{
 }
 td{
     color:rgb(95, 95, 95);
-    border-top:1px solid #F2F2F2;
+    border-top:1px solid #f2f2f2;
 }
 </style>

@@ -11,7 +11,7 @@
 
     footer{
         height:var(--footer-height);
-        background:#35495e;
+        background: #c6cccc;
     }
     .container{
         display:grid;
@@ -19,6 +19,6 @@
     }
     h1{
         color:white;
-        font-size:60px;
+        font-size:30px;
     }
 </style>

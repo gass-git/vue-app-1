@@ -1,5 +1,6 @@
 :root{
+    --body-margin:20px;
     --header-height:100px;
-    --footer-height:200px;
-    --main-height:calc(100vh - var(--header-height) - var(--footer-height));
+    --footer-height:100px;
+    --main-height:calc(100vh - 2*var(--body-margin) - var(--header-height) - var(--footer-height));
 }

@@ -18,6 +18,6 @@ export default {
 <style scoped>
     main{
         min-height:var(--main-height);
-        background: #F1F1F1;
+        background: rgb(241, 241, 241);
     }
 </style>
