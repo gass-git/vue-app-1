@@ -1,15 +1,15 @@
 <template>
-  <section class="grid-container">
-    <header>
-      <HeaderTitle />
-    </header>
-    <main>
-      <MainContent />
-    </main>
-    <footer>
-      <FooterContent />
-    </footer>
-  </section>
+    <div class="grid-container">
+      <header>
+        <HeaderTitle />
+      </header>
+      <main>
+        <MainContent />
+      </main>
+      <footer>
+        <FooterContent />
+      </footer>
+    </div>
 </template>
 
 <script>
@@ -31,14 +31,23 @@ export default {
 @import "./assets/globalStyles.css";
 
 *{
+  box-sizing:0;
+}
+body{ 
   margin:0;
+  padding:0; 
+}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
 }
 header{
   height:var(--header-height);
   background:#42b883;
 }
 main{
-  justify-content: center;
   min-height:var(--main-height);
   background:white;
 }
@@ -46,20 +55,9 @@ footer{
   height:var(--footer-height);
   background:#35495e;
 }
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-.item1{ grid-area: header; }
 .grid-container{
   display:grid;
-  grid-template-areas:
-    'header'
-    'main'
-    'footer';
-  background:lightblue;
+  grid-template-columns: auto;
+  grid-template-rows:auto auto auto;
 }
 </style>
