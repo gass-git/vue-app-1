@@ -1,14 +1,14 @@
 <template>
-    <header>
-        <br>
+    <section class="header-content">
         <h1>Vue App 1: gym customers data</h1>
-    </header>    
+    </section>
 </template>
 
 <style scoped>
-    @import '../assets/globalStyles.css';
-
-    h1{
-        margin:20px;
+    .header-content{
+        height:100%;
+        display:flex;
+        align-items: center;
+        padding:0 0 0 20px;
     }
 </style>

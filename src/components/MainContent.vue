@@ -30,11 +30,6 @@ export default {
         }
     },
     methods: {
-        logCustomers(){
-            return CustomerService.getCustomers().then((resp) => {
-                console.log(resp.data)
-            })
-        },
         getCustomers(){
             CustomerService.getCustomers().then((resp) => {
                 this.customers = resp.data;
@@ -42,18 +37,14 @@ export default {
         }
     },
     created(){
-        this.logCustomers()
         this.getCustomers()
     }
 }
 </script>
 
 <style scoped>
-@import '../assets/globalStyles.css';
-
 table{
     margin:40px auto;
-    font-family: arial, sans-serif;
     font-size:18px;
     border:1px solid #ddd;
 }
@@ -61,10 +52,10 @@ th{
     text-transform: capitalize;
 }
 td,th{
-    padding:8px;
+    text-align: center;
+    padding:8px 15px 8px 15px;
 }
 tr:nth-child(even){
     background:#ddd;
 }
-
 </style>
