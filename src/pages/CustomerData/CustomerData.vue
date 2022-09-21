@@ -46,15 +46,15 @@ export default {
 
 <style scoped>
 table{
+    margin:0 auto;
     background: rgb(255, 255, 255);
-    margin:40px auto;
     font-size:16px;
-    border-radius: 5px;
+    border-radius: 10px;
     padding:10px 20px 10px 20px;
 }
 tr > * {
     text-align: left;
-    padding:12px 30px 12px 30px;   
+    padding:12px 15px 12px 15px;   
 }
 th{
     text-transform: capitalize; 

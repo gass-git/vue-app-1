@@ -1,6 +1,13 @@
 :root{
-    --body-margin:20px;
+    --grid-container-margin-top:30px;
+    --grid-container-margin-bottom:50px;
     --header-height:100px;
     --footer-height:100px;
-    --main-height:calc(100vh - 2*var(--body-margin) - var(--header-height) - var(--footer-height));
+    --main-height:calc(
+            100vh 
+            - var(--grid-container-margin-top) 
+            - var(--grid-container-margin-bottom) 
+            - var(--header-height) 
+            - var(--footer-height)
+        );
 }
