@@ -2,15 +2,15 @@
     <div class="grid-container">
         
         <!-- header -->
-        <div id="header-left-container">
+        <div id="header-left-container" class="white-bg">
             <img class="logo" src="@/assets/vueLogo.svg" />
         </div>
-        <div id="header-middle-container">
+        <div id="header-middle-container" class="white-bg">
             <div id="app-title">
                 <strong>Vue-App-1:</strong> gym customers data
             </div>
         </div>
-        <div id="header-right-container">
+        <div id="header-right-container" class="white-bg">
             <ThemeToggle />
         </div>
 
@@ -57,10 +57,7 @@ body{
   grid-template-rows:100px calc(100vh - 100px);
 }
 
-/* header background color */
-.grid-container > #header-left-container,
-                #header-middle-container,
-                #header-right-container{  
+.white-bg{
     background: white;
 }
 
