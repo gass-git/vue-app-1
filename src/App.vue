@@ -11,9 +11,7 @@
             </div>
         </div>
         <div id="header-right-container">
-            <div>
-                toggle
-            </div>
+            <ThemeToggle />
         </div>
 
         <!-- main content -->
@@ -28,10 +26,12 @@
 
 <script>
 import CustomerData from "./pages/CustomerData/CustomerData.vue";
+import ThemeToggle from "./components/ThemeToggle.vue";
 
 export default {
     name: 'App',
     components: {
+        ThemeToggle,
         CustomerData
     }
 }
@@ -82,6 +82,13 @@ body{
 }
 #header-middle-container #app-title{
     font-size:25px;
+}
+
+#header-right-container{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding:0 30px 0 0;
 }
 
 #main-content{
