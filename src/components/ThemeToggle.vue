@@ -1,18 +1,22 @@
 <script setup>
-    import { defineProps, watchEffect, ref, defineEmits } from 'vue'
+import { defineProps, watchEffect,ref } from 'vue'
 
-    const emits = defineEmits(['changeTheme'])
-    const props = defineProps({currentTheme: String, position: String})
+    const props = defineProps(
+        {
+            currentTheme: String, 
+            togglePosition: String
+        }
+    )
     const position = ref('translateX(0px)')
 
     watchEffect(() => {
-        position.value = props.position
+        position.value = props.togglePosition
     })
 </script>
 
 <template>
     <section id="container">
-        <div id="square" @click="emits('changeTheme')">
+        <div id="square" @click="$emit('changeTheme')">
             <fa v-if="props.currentTheme === 'light'" 
                 icon="fa-solid fa-sun" 
                 class="white-icon" 
@@ -30,19 +34,16 @@
         width:100px;
         height:50px;
         border:2px solid #d5d5d5;
-        border-radius:5px;
-        
+        border-radius:5px;  
     }
     #square{
         margin:2px;
         aspect-ratio: 1;
         height:46px;
-
         display:grid;
         place-items:center;
-
         border-radius:3px;
-        background:#41b883;
+        background:#42b883;
         cursor:pointer;
         transition: 300ms;
         transform:v-bind(position);

@@ -1,22 +1,24 @@
-<script setup>
-    import { onMounted, ref } from 'vue'
-    import CustomerService from '../../services/CustomerService'
+<script>
+import CustomerService from '../../services/CustomerService'
 
-    const customers = ref([])
-
-    function getCustomers(){
-        CustomerService.getCustomers()
-            .then((resp) => {
-                customers.value = resp.data
-            })
-            .cath((error) => {
-                console.log(error)
-            })
+    export default {
+        name: 'CustomerData',
+        data(){
+            return{
+                customers: []
+            }
+        },
+        methods: {
+            getCustomers(){
+                CustomerService.getCustomers().then((resp) => {
+                    this.customers = resp.data;
+                })
+            }
+        },
+        created(){
+            this.getCustomers()
+        }
     }
-
-    onMounted(() => {
-        getCustomers()
-    })
 </script>
 
 <template>
