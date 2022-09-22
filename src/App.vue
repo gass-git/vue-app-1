@@ -11,7 +11,11 @@
             </div>
         </div>
         <div id="header-right-container" class="white-bg">
-            <ThemeToggle />
+            <ThemeToggle 
+                :current-theme="currentTheme"
+                :position="position"
+                @changeTheme="changeTheme"
+            />
         </div>
 
         <!-- main content -->
@@ -24,37 +28,43 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import CustomerData from "./pages/CustomerData/CustomerData.vue";
 import ThemeToggle from "./components/ThemeToggle.vue";
+import {ref} from "vue";
 
-export default {
-    name: 'App',
-    components: {
-        ThemeToggle,
-        CustomerData
+const currentTheme = ref("light")
+const bgColor = ref("#f3f3f3")
+const position = ref('translateX(0px)')
+
+function changeTheme(){
+    if(currentTheme.value === 'light'){
+        currentTheme.value = 'dark'
+        bgColor.value = 'black'
+        position.value = 'translateX(50px)'
+    }
+    else if(currentTheme.value === 'dark'){
+        currentTheme.value = 'light'
+        bgColor.value = '#f3f3f3'
+        position.value = 'translateX(0px)'
     }
 }
 </script>
 
-<style>
+<style scoped>
 @import "./assets/globalStyles.css";
 
-*{ box-sizing:0 }
-body{ 
-  background:#f3f3f3;
-  margin:0;
-}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
 }
 .grid-container{
-  display:grid;
-  grid-template-columns: 20vw 60vw 20vw;
-  grid-template-rows:100px calc(100vh - 100px);
+    background: v-bind(bgColor);
+    display:grid;
+    grid-template-columns: 20vw 60vw 20vw;
+    grid-template-rows:100px calc(100vh - 100px);
 }
 
 .white-bg{
