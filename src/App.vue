@@ -1,3 +1,26 @@
+<script setup>
+import CustomerData from "./pages/CustomerData/CustomerData.vue";
+import ThemeToggle from "./components/ThemeToggle.vue";
+import {ref} from "vue";
+
+const currentTheme = ref("light")
+const bgColor = ref("#f3f3f3")
+const position = ref('translateX(0px)')
+
+function changeTheme(){
+    if(currentTheme.value === 'light'){
+        currentTheme.value = 'dark'
+        bgColor.value = '#35495e'
+        position.value = 'translateX(50px)'
+    }
+    else if(currentTheme.value === 'dark'){
+        currentTheme.value = 'light'
+        bgColor.value = '#f3f3f3'
+        position.value = 'translateX(0px)'
+    }
+}
+</script>
+
 <template>
     <div class="grid-container">
         
@@ -12,7 +35,7 @@
         </div>
         <div id="header-right-container" class="white-bg">
             <ThemeToggle 
-                :current-theme="currentTheme"
+                :currentTheme="currentTheme"
                 :position="position"
                 @changeTheme="changeTheme"
             />
@@ -27,29 +50,6 @@
         
     </div>
 </template>
-
-<script setup>
-import CustomerData from "./pages/CustomerData/CustomerData.vue";
-import ThemeToggle from "./components/ThemeToggle.vue";
-import {ref} from "vue";
-
-const currentTheme = ref("light")
-const bgColor = ref("#f3f3f3")
-const position = ref('translateX(0px)')
-
-function changeTheme(){
-    if(currentTheme.value === 'light'){
-        currentTheme.value = 'dark'
-        bgColor.value = 'black'
-        position.value = 'translateX(50px)'
-    }
-    else if(currentTheme.value === 'dark'){
-        currentTheme.value = 'light'
-        bgColor.value = '#f3f3f3'
-        position.value = 'translateX(0px)'
-    }
-}
-</script>
 
 <style scoped>
 @import "./assets/globalStyles.css";

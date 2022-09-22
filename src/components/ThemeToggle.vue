@@ -1,29 +1,29 @@
-<template>
-    <div id="container">
-        <div id="square" @click="$emit('changeTheme')">
-                <fa v-if="props.currentTheme === 'light'" 
-                    icon="fa-solid fa-sun" 
-                    class="white-icon" 
-                />
-                <fa v-else 
-                    icon="fa-solid fa-moon"
-                    class="white-icon" 
-                />
-        </div>
-    </div>
-</template>
-
 <script setup>
-import { defineProps, watchEffect,ref } from 'vue'
+    import { defineProps, watchEffect, ref, defineEmits } from 'vue'
 
-const props = defineProps({currentTheme: String, position: String})
-const position = ref('translateX(0px)')
+    const emits = defineEmits(['changeTheme'])
+    const props = defineProps({currentTheme: String, position: String})
+    const position = ref('translateX(0px)')
 
-watchEffect(() => {
-    position.value = props.position
-})
-
+    watchEffect(() => {
+        position.value = props.position
+    })
 </script>
+
+<template>
+    <section id="container">
+        <div id="square" @click="emits('changeTheme')">
+            <fa v-if="props.currentTheme === 'light'" 
+                icon="fa-solid fa-sun" 
+                class="white-icon" 
+            />
+            <fa v-else 
+                icon="fa-solid fa-moon"
+                class="white-icon" 
+            />
+        </div>
+    </section>
+</template>
 
 <style scoped>
     #container{
