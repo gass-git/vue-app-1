@@ -4,9 +4,29 @@ import CustomerService from '../../services/CustomerService'
 /**
  *** composition API ***
  **/
+import {defineProps, watchEffect} from 'vue'
 import {ref, onMounted} from 'vue'
+import colors from "../../assets/themeColors"
 
+    const { white, dark} = colors
+    const props = defineProps({currentTheme:String})
     const customers = ref([])
+    
+    // style variables
+    const fontColor = ref(dark)
+    const tableBackground = ref(white)
+
+    watchEffect(() => {
+        if(props.currentTheme === 'light'){
+            fontColor.value = dark
+            tableBackground.value = white
+        }   
+        else{
+            fontColor.value = white
+            tableBackground.value = dark
+        }
+    })
+    
 
     onMounted(() => {
         CustomerService.getCustomers()
@@ -72,8 +92,9 @@ import {ref, onMounted} from 'vue'
 <style scoped>
 table{
     margin:0 auto;
-    background: rgb(255, 255, 255);
+    background:v-bind(tableBackground);
     font-size:16px;
+    color:v-bind(fontColor);
     border-radius: 10px;
     padding:10px 20px 10px 20px;
 }
@@ -85,7 +106,7 @@ th{
     text-transform: capitalize; 
 }
 td{
-    color:rgb(95, 95, 95);
+    color:v-bind(fontColor);
     border-top:1px solid #f2f2f2;
 }
 </style>

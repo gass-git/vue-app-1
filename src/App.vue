@@ -14,7 +14,8 @@ import colors from "./assets/themeColors"
     // current theme colors
     const appBackground = ref(lightGrey)
     const headerBackground = ref(white)
-    const headerTitleColor = ref(darkBlue)
+    const fontColor = ref(darkBlue)
+    const tableBackground = ref(white)
 
     function changeTheme(){
         if(currentTheme.value === 'light') setTheme('dark')
@@ -28,12 +29,14 @@ import colors from "./assets/themeColors"
             case 'light':
                 appBackground.value = lightGrey
                 headerBackground.value = white
-                headerTitleColor.value = darkBlue
+                fontColor.value = darkBlue
+                tableBackground.value = white
                 break;
             case 'dark':
                 appBackground.value = blueVue
                 headerBackground.value = dark
-                headerTitleColor.value = white
+                fontColor.value = white
+                tableBackground.value = dark
                 break;
         }
     }
@@ -62,7 +65,9 @@ import colors from "./assets/themeColors"
         <!---- main ---->
         <div></div>
         <div id="main-content">
-            <CustomerData />
+            <CustomerData 
+                v-bind:current-theme="currentTheme"
+            />
         </div>
         <div></div>
 
@@ -73,7 +78,7 @@ import colors from "./assets/themeColors"
 @import "./assets/globalStyles.css";
 
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: Avenir, Helvetica, Arial, sans-serif !important;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: #2c3e50;
@@ -104,7 +109,7 @@ import colors from "./assets/themeColors"
 }
 #header-middle-container #app-title{
     font-size:25px;
-    color:v-bind(headerTitleColor);
+    color:v-bind(fontColor);
 }
 #header-right-container{
     display: flex;
