@@ -1,28 +1,40 @@
 <script setup>
-import CustomerData from "./pages/CustomerData/CustomerData.vue";
-import ThemeToggle from "./components/ThemeToggle.vue";
 import {ref} from "vue";
 
+// components
+import CustomerData from "./pages/CustomerData/CustomerData.vue";
+import ThemeToggler from "./components/ThemeToggler.vue";
+
+// colors
+import colors from "./assets/themeColors"
+
+    const {lightGrey, darkBlue, blueVue, dark, white} = colors
     const currentTheme = ref('light')
-    const headerBackground = ref('#fff')
-    const appBackground = ref('#f3f3f3')
-    const headerTitleColor = ref('#2c3e50')
-    const togglePosition = ref('translateX(0px)')
+    
+    // current theme colors
+    const appBackground = ref(lightGrey)
+    const headerBackground = ref(white)
+    const headerTitleColor = ref(darkBlue)
 
     function changeTheme(){
-        if(currentTheme.value === 'light'){
-            currentTheme.value = 'dark'
-            headerBackground.value = '#2C3333'
-            headerTitleColor.value = '#fff'
-            appBackground.value = '#35495e'
-            togglePosition.value = 'translateX(50px)'
-        }
-        else if(currentTheme.value === 'dark'){
-            currentTheme.value = 'light'
-            headerBackground.value = '#fff'
-            headerTitleColor.value = '#2c3e50'
-            appBackground.value = '#f3f3f3'
-            togglePosition.value = 'translateX(0px)'
+        if(currentTheme.value === 'light') setTheme('dark')
+        else setTheme('light')
+    }
+
+    function setTheme(themeName){
+        currentTheme.value = themeName
+        
+        switch(themeName){
+            case 'light':
+                appBackground.value = lightGrey
+                headerBackground.value = white
+                headerTitleColor.value = darkBlue
+                break;
+            case 'dark':
+                appBackground.value = blueVue
+                headerBackground.value = dark
+                headerTitleColor.value = white
+                break;
         }
     }
 </script>
@@ -30,36 +42,36 @@ import {ref} from "vue";
 <template>
     <section class="grid-container">
         
-        <!-- header -->
+        <!---- header ---->
         <div id="header-left-container" class="bg-color">
             <img class="logo" src="@/assets/vueLogo.svg" />
         </div>
         <div id="header-middle-container" class="bg-color">
             <div id="app-title">
-                <strong>Vue-App-1:</strong> gym customers data
+                <strong>Vue-App-1:</strong> 
+                gym customers data
             </div>
         </div>
         <div id="header-right-container" class="bg-color">
-            <ThemeToggle 
+            <ThemeToggler
                 v-bind:current-theme="currentTheme"
-                v-bind:toggle-position="togglePosition"
-                v-bind:toggle-color="toggleColor"
-                v-on:change-theme="changeTheme"
+                @change-theme="changeTheme"
             />
         </div>
 
-        <!-- main content -->
+        <!---- main ---->
         <div></div>
         <div id="main-content">
             <CustomerData />
         </div>
         <div></div>
-        
+
     </section>
 </template>
 
 <style scoped>
 @import "./assets/globalStyles.css";
+
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

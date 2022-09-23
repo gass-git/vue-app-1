@@ -1,16 +1,16 @@
 <script setup>
 import { defineProps, watchEffect,ref } from 'vue'
 
-    const props = defineProps(
-        {
-            currentTheme: String, 
-            togglePosition: String
-        }
-    )
-    const position = ref('translateX(0px)')
+    const props = defineProps({currentTheme: String})
+    const toggleTranslation = ref('translateX(0px)')
 
     watchEffect(() => {
-        position.value = props.togglePosition
+        if(props.currentTheme === 'light'){
+            toggleTranslation.value = 'translateX(0px)'
+        }
+        else{
+            toggleTranslation.value = 'translateX(50px)'
+        }
     })
 </script>
 
@@ -46,7 +46,7 @@ import { defineProps, watchEffect,ref } from 'vue'
         background:#42b883;
         cursor:pointer;
         transition: 300ms;
-        transform:v-bind(position);
+        transform:v-bind(toggleTranslation);
     }
     .white-icon{
         color:#fff;

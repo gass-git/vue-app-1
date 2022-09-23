@@ -1,6 +1,26 @@
-<script>
+ <script setup>
 import CustomerService from '../../services/CustomerService'
 
+/**
+ *** composition API ***
+ **/
+import {ref, onMounted} from 'vue'
+
+    const customers = ref([])
+
+    onMounted(() => {
+        CustomerService.getCustomers()
+            .then((resp) => {
+                customers.value = resp.data
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    })
+
+/**
+ *  options API
+ *
     export default {
         name: 'CustomerData',
         data(){
@@ -10,8 +30,12 @@ import CustomerService from '../../services/CustomerService'
         },
         methods: {
             getCustomers(){
-                CustomerService.getCustomers().then((resp) => {
-                    this.customers = resp.data;
+                CustomerService.getCustomers()
+                    .then((resp) => {
+                        this.customers = resp.data;
+                    .catch((error) => {
+                        console.log(error)
+                    })
                 })
             }
         },
@@ -19,6 +43,7 @@ import CustomerService from '../../services/CustomerService'
             this.getCustomers()
         }
     }
+*/
 </script>
 
 <template>
